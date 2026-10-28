@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | Sew Stitchin' Perfect</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            background: #eae4ee;
+            color: #333333;
+            font-family: Arial, sans-serif;
+        }
+
+        .cart-card {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 30px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px #3f2f4a20;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #5c4577;
+        }
+
+        .empty-cart {
+            padding: 35px 15px;
+            text-align: center;
+            background: #f5f0fa;
+            border-radius: 10px;
+        }
+
+        .cart-icon {
+            font-size: 42px;
+        }
+
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #9370DB;
+            color: white;
+
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .checkout-btn:disabled {
+            background: #bdb3c9;
+            cursor: not-allowed;
+        }
+
+        .note {
+            color: #666666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="cart-card">
+        <h1>Shopping Cart</h1>
+
+        <div class="empty-cart">
+            <div class="cart-icon" aria-hidden="true">🛒</div>
+            <h2>Your cart is empty</h2>
+            <p>
+                Your selected quilting products and patterns
+                will appear here.
+            </p>
+        </div>
+
+        <h2>Order Summary</h2>
+        <p>Subtotal: <strong>0.00</strong></p><p>Shipping:<strong>placeholder</strong></p><p>Total:<strong>0.00</strong></p>
+
+        <button class="checkout-btn" type="button" disabled>
+            Proceed to Payment
+        </button>
+
+        <p class="note">
+            This a work and progress tab and will be completed by tomorrow
+        </p>
+    </main>
+</body>
+</html>

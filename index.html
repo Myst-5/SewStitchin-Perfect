@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sew Stitchin' Perfect</title>
+    <link rel="icon" href="/SewStitchin'Perfect/stichinlogo.png" type="image/png">
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js" defer></script>
+</head>
+<body style="background-color: #eae4ee;">
+
+<header class="site-header">
+
+    <img  class="sewing-logo" src="sewinglogo.jpeg" alt="Header Image">
+
+    <div class="header-top">
+        <!-- Optional header logo or site title can go here -->
+    </div>
+
+<nav class="frame-switcher" role="tablist" aria-label="Website sections">
+
+    <button
+        type="button"
+        class="frame-btn active"
+        id="calcBtn"
+        role="tab"
+        aria-controls="calculatorFrame"
+        aria-selected="true"
+        onclick="switchFrame('calculator')">
+        Quilt Calculator
+    </button>
+
+    <button
+        type="button"
+        class="frame-btn"
+        id="libraryBtn"
+        role="tab"
+        aria-controls="libraryFrame"
+        aria-selected="false"
+        onclick="switchFrame('library')">
+        Pattern Library
+    </button>
+
+
+    <button
+        type="button"
+        class="frame-btn"
+        id="aboutBtn"
+        role="tab"
+        aria-controls="aboutFrame"
+        aria-selected="false"
+        onclick="switchFrame('about')">
+        About
+    </button>
+
+</nav>
+
+</header>
+
+<div class="website-welcome">
+
+</div>
+
+<div class="website-body">
+
+
+    <!-- Container surrounds the selected iframe -->
+    <div class="tab-calc" id="frameContainer">
+
+        <!-- Calculator -->
+        <iframe class="calc-frame active-frame" id="calculatorFrame" src="calculator.html" title="Quilt Calculator"></iframe>
+                <button
+                    type="button"
+                    class="frame-btn"
+                    id="cartBtn"
+                    role="tab"
+                    aria-controls="cartFrame"
+                    aria-selected="false"
+                    onclick="switchFrame('cart')">
+                    Shopping Cart
+                </button>
+        <!-- Pattern Library -->
+        <iframe class="lib-frame" id="libraryFrame" src="pattern-library.html" title="Pattern Library"></iframe>
+        <!-- Shopping Cart and Payment -->
+<iframe class="cart-frame" id="cartFrame" src="shopping-cart.html" title="Shopping Cart and Payment" aria-hidden="true" tabindex="-1"></iframe>
+
+<!-- About -->
+<iframe class="about-frame" id="aboutFrame" src="about.html" title="About Sew Stitchin' Perfect" aria-hidden="true" tabindex="-1"></iframe>
+
+    </div>
+</div>
+</body>
+</html>

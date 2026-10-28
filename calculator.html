@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sew Stitchin' Perfect - Quilt Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="calculator.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+
+<div class="calc-card">
+    <div class="header-bar">
+        <h2>Quilt Checkout</h2>
+        <label class="admin-switch-label">
+            Modify Mode
+            <span class="switch">
+                <input type="checkbox" id="adminToggle" onchange="toggleAdminMode()">
+                <span class="slider"></span>
+            </span>
+        </label>
+    </div>
+
+    <!-- Admin Toolbar -->
+    <div class="admin-toolbar" id="adminToolbar">
+        <button class="admin-btn" onclick="openAddModal()">＋ Add Pattern</button>
+        <button class="admin-btn danger" onclick="deleteCurrentPattern()">🗑 Delete Selected</button>
+        <button class="admin-btn" onclick="exportSiteCode()">💾 Export Site Code</button>
+    </div>
+
+    <!-- Dimensions Section -->
+    <div class="section-header">
+        <div class="section-title">Quilt Dimensions</div>
+        <div class="select-wrapper" style="width: auto;">
+            <select id="unitSelect" onchange="convertUnitValues()">
+                <option value="cm">Centimeters (cm)</option>
+                <option value="in" selected>Inches (in)</option>
+                <option value="ft">Feet (ft)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="field-group">
+        <div class="row">
+            <div>
+                <label for="side1">Length (<span class="unit-label">in</span>)</label>
+                <input type="number" id="side1" value="60" min="0" placeholder="0" oninput="calculate()">
+            </div>
+            <div>
+                <label for="side2">Width (<span class="unit-label">in</span>)</label>
+                <input type="number" id="side2" value="84" min="0" placeholder="0" oninput="calculate()">
+            </div>
+        </div>
+        <div class="formula-preview">Perimeter = (2×Length + 2×Width) | Area = (Length × Width)</div>
+    </div>
+
+    <!-- Pattern Dropdown Section -->
+    <div class="section-header">
+        <div class="section-title">Pattern</div>
+    </div>
+    <div class="field-group">
+        <div class="split-bubbles-row">
+            <div class="pattern-btn-wrapper">
+                <button class="pattern-selected-btn" id="patternBtn" onclick="togglePatternMenu(event)">
+                    <span id="selectedPatternName">Select Pattern...</span>
+                    <span>▾</span>
+                </button>
+
+                <div class="pattern-menu" id="patternMenu">
+                    <input type="text" class="pattern-search-input" id="patternSearch" placeholder="Search patterns..." oninput="filterPatterns()">
+                    <div id="patternList"></div>
+                </div>
+            </div>
+
+            <div class="pattern-price-bubble">
+                <span class="pattern-price-value" id="selectedPatternPrice">$0.00</span>
+                <span class="pattern-price-unit" id="selectedPatternUnit">/sq in</span>
+            </div>
+        </div>
+        <div class="formula-preview">(Length × Width) × Pattern Rate</div>
+    </div>
+
+    <!-- Thread Color Section -->
+    <div class="section-header">
+        <div class="section-title">Thread Color</div>
+    </div>
+    <div class="field-group">
+        <input type="text" id="threadColorInput" placeholder="e.g. White, Navy, Matching, Complimentary, etc." oninput="calculate()">
+    </div>
+
+    <!-- Batting Options Section -->
+    <div class="section-header">
+        <div class="section-title">Include Batting?</div>
+    </div>
+    <div class="field-group">
+        <div class="btn-group" id="battingBtnGroup">
+            <button class="option-btn" id="battingNoneBtn" onclick="setBatting('none')">No</button>
+            <button class="option-btn active" id="batting8020Btn" onclick="setBatting('8020')">80/20 ($0.30/in)</button>
+            <button class="option-btn" id="battingHighLoftBtn" onclick="setBatting('highloft')">High Loft ($0.42/in)</button>
+        </div>
+        <div class="formula-preview">Length × Batting Rate</div>
+    </div>
+
+    <!-- Binding Section -->
+    <div class="section-header">
+        <div class="section-title">Include Binding?</div>
+    </div>
+    <div class="field-group">
+        <div class="btn-group" id="bindingBtnGroup">
+            <button class="option-btn" id="bindingNoBtn" onclick="setBinding(false)">No</button>
+            <button class="option-btn active" id="bindingYesBtn" onclick="setBinding(true)">Yes ($0.20/in)</button>
+        </div>
+        <div class="formula-preview">Perimeter (2×Length + 2×Width) × Binding Rate</div>
+    </div>
+
+    <!-- Grand Total -->
+    <div class="result-box">
+        <div class="result-label">Total Estimate</div>
+        <div class="result-value" id="resultContainer">$<span id="total">0.00</span></div>
+    </div>
+    
+<!-- Modal for adding new pattern -->
+<div class="modal-overlay" id="addPatternModal">
+    <div class="modal-card">
+        <div class="modal-title">Add New Pattern</div>
+        <div class="field-group">
+            <label for="newPatternName">Pattern Name</label>
+            <input type="text" id="newPatternName" placeholder="e.g. Feather Lattice">
+        </div>
+        <div class="field-group">
+            <label for="newPatternRate">Rate ($ per sq inch)</label>
+            <input type="number" id="newPatternRate" step="0.001" min="0" placeholder="0.02">
+        </div>
+        <div class="modal-actions">
+            <button class="option-btn" onclick="closeAddModal()">Cancel</button>
+            <button class="admin-btn" onclick="saveNewPattern()">Save Pattern</button>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+</html>

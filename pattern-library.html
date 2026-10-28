@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sew Stitchin' Perfect - Pattern Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pattern-library.css">
+    <script src="main.js" defer></script>
+    <style>
+        .pattern-price {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #eae4ee;
+            color: #493654;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .pattern-rate-note {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #5d5263;
+        }
+    </style>
+</head>
+<body>
+    <header class="top-bar">
+        <div class="header-left">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" onclick="toggleSidebar()" title="Toggle Categories Navigation" type="button">
+                <span id="toggleIcon">☰</span> <span id="toggleText">Menu</span>
+            </button>
+            <div class="brand-title">Stitchin' Patterns</div>
+        </div>
+        <button class="toggle-btn" id="toggleAllBtn" onclick="toggleAllPatterns()" type="button">Expand All</button>
+    </header>
+
+    <div class="app-container">
+        <div class="mobile-overlay" id="mobileOverlay" onclick="toggleSidebar()"></div>
+        <aside class="sidebar collapsed" id="sidebar">
+            <div class="sidebar-header"><h2>Categories</h2></div>
+            <div class="slider-list" id="sidebarNav"></div>
+        </aside>
+
+        <main class="main-workspace">
+            <div class="center-box">
+                <div class="center-header">
+                    <h1 id="categoryTitle">All Patterns</h1>
+                    <p id="categoryDesc">Browse all quilting patterns and their base prices.</p>
+                    <p class="pattern-rate-note">Prices are the calculator's base rates per square inch. The calculator converts rates when you change measurement units.</p>
+                </div>
+                <div class="center-content">
+                    <div class="pattern-grid" id="patternGrid"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

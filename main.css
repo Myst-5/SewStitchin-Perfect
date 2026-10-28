@@ -1,0 +1,235 @@
+/*HEADER*/
+
+.site-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 100%;
+    min-height: 150px;
+    padding: 20px 30px 0;
+
+    box-sizing: border-box;
+    background-color: #C3B1E1;
+    color: #333333;
+}
+
+/*BROWSER-STYLE TABS ON THE RIGHT*/
+
+.frame-switcher {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 4px;
+
+    width: 100%;
+    margin-top: auto;
+}
+
+.frame-btn {
+    position: relative;
+    padding: 12px 24px;
+
+    border: 1px solid #8f7aa9;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+
+    background-color: #b5a0d2;
+    color: #3f2f4a;
+
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+.frame-btn:hover:not(.active) {
+    background-color: #d8c9ed;
+}
+
+.frame-btn.active {
+    z-index: 2;
+    background-color: #3f2f4a;
+    color: #ffffff;
+    border-color: #3f2f4a;
+}
+
+/*WELCOME SECTION ON THE LEFT*/
+
+.logo-body {
+    position: absolute;
+    top: 190px;
+    left: 30px;
+
+    width: 400px;
+    max-width: calc(35% - 40px);
+    height: auto;
+
+    text-align: left;
+}
+
+.logo-body img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.logo-body h2,
+.logo-body h3 {
+    color: #333333;
+}
+
+.logo-body h3 {
+    font-weight: normal;
+    line-height: 1.6;
+}
+
+/* ========================================
+   IFRAME AREA ON THE RIGHT
+======================================== */
+
+.website-body {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    width: 100%;
+    padding: 30px 30px 20px;
+    box-sizing: border-box;
+}
+
+.sewing-logo {
+    position:absolute;
+    width: 50%;
+    height: 15.25%;
+}
+
+/* Content panel connected to the tabs */
+.tab-calc {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    width: fit-content;
+    max-width: 100%;
+    padding: 8px;
+
+    box-sizing: border-box;
+    background-color: #3f2f4a;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+}
+
+/*IFRAMES*/
+
+/* All 4 iframe types share base styling */
+.calc-frame,
+.lib-frame,
+.cart-frame,
+.about-frame {
+    display: none;
+    flex: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Individual page dimensions */
+.calc-frame {
+    width: 500px;
+    height: 800px;
+}
+
+.lib-frame {
+    width: 1100px;
+    height: 800px;
+}
+
+.cart-frame {
+    width: 750px;
+    height: 800px;
+}
+
+.about-frame {
+    width: 750px;
+    height: 800px;
+}
+
+/* Show only the selected page */
+.about-frame.active-frame,
+.lib-frame.active-frame,
+.cart-frame.active-frame,
+.calc-frame.active-frame {
+    display: block;
+}
+
+/* Smaller screens */
+@media (max-width: 900px) {
+    .calc-frame,
+    .lib-frame,
+    .cart-frame,
+    .about-frame {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+/*RESPONSIVE LAYOUT*/
+
+@media (max-width: 900px) {
+    .logo-body {
+        position: static;
+        width: auto;
+        max-width: 800px;
+        margin: 25px auto;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    .logo-body img {
+        margin: 0 auto;
+        max-width: 250px;
+    }
+
+    .website-body {
+        justify-content: center;
+        padding: 0 10px 20px;
+        overflow-x: auto;
+    }
+
+    .site-header {
+        padding: 15px 10px 0;
+    }
+
+    .frame-switcher {
+        justify-content: center;
+    }
+
+    .frame-btn {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .tab-calc {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .calc-frame,
+    .lib-frame {
+        width: 100%;
+        height: 800px;
+    }
+}
+
+.website-welcome {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+}
