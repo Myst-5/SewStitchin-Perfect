@@ -479,4 +479,44 @@ window.onload = function() {
 /*-----------------------Shopping--------------------*/
 /*---------------------Cart--Script------------------*/
 
+function payWithVenmo() {
+    const venmoUsername = "YourVenmoUsername"; // <-- Replace with your Venmo username (no @)
+    
+    // Grab current total
+    const totalElement = document.getElementById("total");
+    const totalAmount = parseFloat(totalElement.textContent) || 0;
+
+    if (totalAmount <= 0) {
+        alert("Please enter quilt dimensions and select a pattern before paying.");
+        return;
+    }
+
+    // Gather quilt details for the Venmo receipt note
+    const length = document.getElementById("side1").value || "0";
+    const width = document.getElementById("side2").value || "0";
+    const unit = document.getElementById("unitSelect").value;
+    const pattern = document.getElementById("selectedPatternName").textContent;
+    const thread = document.getElementById("threadColorInput").value.trim() || "Not specified";
+
+    // Get active Batting and Binding selections
+    const activeBatting = document.querySelector("#battingBtnGroup .option-btn.active")?.textContent || "None";
+    const activeBinding = document.querySelector("#bindingBtnGroup .option-btn.active")?.textContent || "No";
+
+    // Format the order summary note
+    const note = [
+        `Sew Stitchin' Perfect Quilt Order`,
+        `Size: ${length}x${width} ${unit}`,
+        `Pattern: ${pattern}`,
+        `Thread: ${thread}`,
+        `Batting: ${activeBatting}`,
+        `Binding: ${activeBinding}`
+    ].join(" | ");
+
+    // Build the Venmo URL
+    const venmoUrl = `https://venmo.com/${encodeURIComponent(venmoUsername)}?txn=pay&amount=${totalAmount.toFixed(2)}&note=${encodeURIComponent(note)}`;
+
+    // Open Venmo in a new tab (or trigger the Venmo mobile app)
+    window.open(venmoUrl, "_blank", "noopener,noreferrer");
+}
+
 
