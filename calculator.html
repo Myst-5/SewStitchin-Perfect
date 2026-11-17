@@ -129,6 +129,26 @@
         </svg>
         <span>Pay Estimate with Venmo</span>
     </button>
+</div> <!-- Close .calc-card BEFORE the modal -->
+
+<!-- Modal for adding new pattern -->
+<div class="modal-overlay" id="addPatternModal">
+    <div class="modal-card">
+        <div class="modal-title">Add New Pattern</div>
+        <div class="field-group">
+            <label for="newPatternName">Pattern Name</label>
+            <input type="text" id="newPatternName" placeholder="e.g. Feather Lattice">
+        </div>
+        <div class="field-group">
+            <label for="newPatternRate">Rate ($ per sq inch)</label>
+            <input type="number" id="newPatternRate" step="0.001" min="0" placeholder="0.02">
+        </div>
+        <div class="modal-actions">
+            <button type="button" class="option-btn" onclick="closeAddModal()">Cancel</button>
+            <button type="button" class="admin-btn" onclick="saveNewPattern()">Save Pattern</button>
+        </div>
+    </div>
+</div>    
     
 <!-- Modal for adding new pattern -->
 <div class="modal-overlay" id="addPatternModal">
