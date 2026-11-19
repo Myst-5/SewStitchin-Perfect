@@ -1,76 +1,226 @@
 /* ========================================
-   ABOUT PAGE STYLES
+   2. HEADER & LOGO STYLING
 ======================================== */
-* {
+.site-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 220px;
     box-sizing: border-box;
+    background-color: #C3B1E1;
+    color: #333333;
+    position: relative;
+}
+
+.logo-circle {
+    position: relative;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background-color: #e8e2eb; /* Soft lavender-white interior */
+
+    /* Inner border + outer plum ring that stays inside the header */
+    border: 3px solid #8f7aa9;
+    box-shadow:
+        0 0 0 4px #C3B1E1,
+        0 0 0 8px #3f2f4a;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    margin-bottom: 10px;
+    z-index: 3;
+}
+
+.sewing-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/*BROWSER-STYLE TABS ON THE RIGHT*/
+
+.frame-switcher {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 4px;
+
+    width: 100%;
+    margin-top: auto;
+}
+
+.frame-btn {
+    position: relative;
+    padding: 12px 24px;
+
+    border: 1px solid #8f7aa9;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+
+    background-color: #b5a0d2;
+    color: #3f2f4a;
+
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+.frame-btn:hover:not(.active) {
+    background-color: #d8c9ed;
+}
+
+.frame-btn.active {
+    z-index: 2;
+    background-color: #3f2f4a;
+    color: #ffffff;
+    border-color: #3f2f4a;
+}
+
+
+/* ========================================
+   IFRAME AREA ON THE RIGHT
+======================================== */
+
+.website-body {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    width: 100%;
+    
+    box-sizing: border-box;
+}
+
+.sewing-logo {
+    position:absolute;
+    width: 50%;
+    height: 15.25%;
+}
+
+/* Content panel connected to the tabs */
+.tab-calc {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    width: fit-content;
+    max-width: 100%;
+    padding: 8px;
+
+    box-sizing: border-box;
+    background-color: #3f2f4a;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+}
+
+/*IFRAMES*/
+
+/* All 4 iframe types share base styling */
+.calc-frame,
+.lib-frame,
+.cart-frame,
+.about-frame {
+    display: none;
+    flex: none;
+    border: none;
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
 }
 
-body {
-    min-height: 100vh;
-    padding: 32px 24px;
-    background-color: #eae4ee;
-    color: #3a2c3f;
-    line-height: 1.65;
+/* Individual page dimensions */
+.calc-frame {
+    width: 500px;
+    height: 800px;
 }
 
-.about-card {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 34px 38px;
-    background-color: #e8e2eb;
-    border: 2px solid #8f7aa9;
-    border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(63, 47, 74, 0.16);
+.lib-frame {
+    width: 1100px;
+    height: 800px;
 }
 
-.about-card {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 34px 38px;
-    background-color: #ffffff;
-    border: 2px solid #8f7aa9;
-    border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(63, 47, 74, 0.16);
+.cart-frame {
+    width: 750px;
+    height: 800px;
 }
 
-.about-divider {
-    height: 3px;
-    width: 84px;
-    margin-bottom: 24px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #3f2f4a, #b5a0d2);
+.about-frame {
+    width: 750px;
+    height: 800px;
 }
 
-.about-card h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #3f2f4a;
-    margin: 24px 0 10px;
+/* Show only the selected page */
+.about-frame.active-frame,
+.lib-frame.active-frame,
+.cart-frame.active-frame,
+.calc-frame.active-frame {
+    display: block;
 }
 
-.about-card p {
-    font-size: 1rem;
-    color: #3a2c3f;
-    margin-bottom: 14px;
+/* Smaller screens */
+@media (max-width: 900px) {
+    .calc-frame,
+    .lib-frame,
+    .cart-frame,
+    .about-frame {
+        width: 100%;
+        min-width: 0;
+    }
 }
 
-.about-card p:last-child {
-    margin-bottom: 0;
+/*RESPONSIVE LAYOUT*/
+
+@media (max-width: 900px) {
+    .logo-body {
+        position: static;
+        width: auto;
+        max-width: 800px;
+        margin: 25px auto;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    .logo-body img {
+        margin: 0 auto;
+        max-width: 250px;
+    }
+
+    .website-body {
+        justify-content: center;
+        padding: 0 10px 20px;
+        overflow-x: auto;
+    }
+
+    .site-header {
+        padding: 15px 10px 0;
+    }
+
+    .frame-switcher {
+        justify-content: center;
+    }
+
+    .frame-btn {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 600px) {
-    body {
-        padding: 16px 12px;
+    .tab-calc {
+        width: 100%;
+        padding: 5px;
     }
 
-    .about-card {
-        padding: 22px 20px;
-    }
-
-    .about-card h1 {
-        font-size: 1.5rem;
+    .calc-frame,
+    .lib-frame {
+        width: 100%;
+        height: 800px;
     }
 }
