@@ -89,36 +89,6 @@
     border-color: #3f2f4a;
 }
 
-/*WELCOME SECTION ON THE LEFT*/
-
-.logo-body {
-    position: absolute;
-    top: 190px;
-    left: 30px;
-
-    width: 400px;
-    max-width: calc(35% - 40px);
-    height: auto;
-
-    text-align: left;
-}
-
-.logo-body img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-.logo-body h2,
-.logo-body h3 {
-    color: #333333;
-}
-
-.logo-body h3 {
-    font-weight: normal;
-    line-height: 1.6;
-}
 
 /* ========================================
    IFRAME AREA ON THE RIGHT
@@ -132,12 +102,6 @@
     width: 100%;
     
     box-sizing: border-box;
-}
-
-.sewing-logo {
-    position:absolute;
-    width: 50%;
-    height: 15.25%;
 }
 
 /* Content panel connected to the tabs */
