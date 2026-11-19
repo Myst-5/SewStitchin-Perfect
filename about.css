@@ -23,7 +23,7 @@
     /* Inner border + outer plum ring that stays inside the header */
     border: 3px solid #8f7aa9;
     box-shadow:
-        0 0 0 4px #C3B1E1,
+        0 0 0 4px #C3B1E1
         0 0 0 8px #3f2f4a;
 
     display: flex;
