@@ -41,14 +41,9 @@
     position: relative;
     width: 95%;
     height: 100%;
-}
-.sewing-logo {
-    position: relative;
     top: 1px;
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
-    height: 120px;
     object-fit: contain;
     z-index: 4;
 }
