@@ -6,8 +6,8 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    min-height: 240px;
-    padding: 20px 30px 0;
+    min-height: 220px;
+    padding: 18px 30px 14px;
     box-sizing: border-box;
     background-color: #C3B1E1;
     color: #333333;
@@ -15,25 +15,23 @@
 }
 
 .logo-circle {
-    position: absolute;
-    top: 15px;
-    left: 30px;
-    width: 240px;
-    height: 240px;
+    position: relative;
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
     background-color: #e8e2eb; /* Soft lavender-white interior */
-    
-    /* Inner border + gap + outer plum ring */
+
+    /* Inner border + outer plum ring that stays inside the header */
     border: 3px solid #8f7aa9;
-    outline: 5px solid #3f2f4a;
-    outline-offset: 4px;
-    
-    /* Centers the logo inside the circle */
+    box-shadow:
+        0 0 0 4px #C3B1E1,
+        0 0 0 8px #3f2f4a;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 22px;
-    box-shadow: 0 6px 16px rgba(63, 47, 74, 0.22);
+    padding: 14px;
+    margin-bottom: 10px;
     z-index: 3;
 }
 
