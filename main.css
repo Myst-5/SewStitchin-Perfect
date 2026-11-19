@@ -35,10 +35,12 @@
 }
 
 .sewing-logo {
+    position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    z-index: 3;
 }
 
 /*BROWSER-STYLE TABS ON THE RIGHT*/
