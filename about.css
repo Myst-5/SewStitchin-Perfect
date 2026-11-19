@@ -1,1 +1,73 @@
+/* ========================================
+   ABOUT PAGE STYLES
+======================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
 
+body {
+    min-height: 100vh;
+    padding: 32px 24px;
+    background-color: #eae4ee;
+    color: #3a2c3f;
+    line-height: 1.65;
+}
+
+.about-card {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 34px 38px;
+    background-color: #e8e2eb;
+    border: 2px solid #8f7aa9;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(63, 47, 74, 0.16);
+}
+
+.about-card h1 {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #3f2f4a;
+    margin-bottom: 12px;
+}
+
+.about-divider {
+    height: 3px;
+    width: 84px;
+    margin-bottom: 24px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #3f2f4a, #b5a0d2);
+}
+
+.about-card h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #3f2f4a;
+    margin: 24px 0 10px;
+}
+
+.about-card p {
+    font-size: 1rem;
+    color: #3a2c3f;
+    margin-bottom: 14px;
+}
+
+.about-card p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 16px 12px;
+    }
+
+    .about-card {
+        padding: 22px 20px;
+    }
+
+    .about-card h1 {
+        font-size: 1.5rem;
+    }
+}
