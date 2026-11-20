@@ -280,16 +280,6 @@
     background-color: #111;
 }
 
-/* Adjust right website body to fit beside the left column */
-.website-body {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    width: fit-content;
-    box-sizing: border-box;
-}
-
-/* Responsive adjustment for smaller screens */
 @media (max-width: 1100px) {
     .master-layout {
         flex-direction: column;
@@ -301,8 +291,3 @@
         max-width: 500px;
     }
 
-    .website-body {
-        justify-content: center;
-        width: 100%;
-    }
-}
