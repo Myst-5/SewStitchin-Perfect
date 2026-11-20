@@ -3,16 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quilt Photo Gallery</title>
+    <title>Quilt Photo Slideshow</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: #111;
+            background-color: #3f2f4a; /* Matches site theme */
             color: #fff;
             font-family: sans-serif;
             display: flex;
@@ -22,18 +17,15 @@
             height: 100vh;
             overflow: hidden;
         }
-
         .slideshow-container {
             position: relative;
-            width: 80vw;
-            height: 75vh;
-            max-width: 1200px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            border-radius: 8px;
+            width: 100%;
+            height: 85%;
+            border-radius: 6px;
             overflow: hidden;
-            background-color: #000;
+            background-color: #1a1220;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
         }
-
         .slide {
             position: absolute;
             top: 0;
@@ -44,21 +36,16 @@
             transition: opacity 1.5s ease-in-out;
             object-fit: contain;
         }
-
-        .slide.active {
-            opacity: 1;
-        }
-
+        .slide.active { opacity: 1; }
         .caption {
-            margin-top: 15px;
-            font-size: 1.1rem;
+            margin-top: 12px;
+            font-size: 0.95rem;
             letter-spacing: 1px;
-            color: #ccc;
+            color: #d8c9ed; /* Soft lavender text */
         }
     </style>
 </head>
 <body>
-
     <div class="slideshow-container">
         <img src="Quilt Photos.jpg" class="slide active" alt="Quilt Photo">
         <img src="Quilt Photos-3.jpg" class="slide" alt="Quilt Photo">
@@ -69,14 +56,13 @@
         <img src="Quilt Photos_3.jpg" class="slide" alt="Quilt Photo">
         <img src="Quilt Photos_3-2.jpg" class="slide" alt="Quilt Photo">
     </div>
-
     <div class="caption" id="caption">Quilt 1 of 8</div>
 
     <script>
         const slides = document.querySelectorAll('.slide');
         const caption = document.getElementById('caption');
         let currentIndex = 0;
-        const slideInterval = 4000; // Time in milliseconds each image is shown (4 seconds)
+        const slideInterval = 4000;
 
         function nextSlide() {
             slides[currentIndex].classList.remove('active');
@@ -87,6 +73,5 @@
 
         setInterval(nextSlide, slideInterval);
     </script>
-
 </body>
 </html>
