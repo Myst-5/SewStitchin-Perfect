@@ -94,15 +94,6 @@
    IFRAME AREA ON THE RIGHT
 ======================================== */
 
-.website-body {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-
-    width: 100%;
-    
-    box-sizing: border-box;
-}
 
 /* Content panel connected to the tabs */
 .tab-calc {
@@ -177,26 +168,6 @@
 
 /*RESPONSIVE LAYOUT*/
 
-@media (max-width: 900px) {
-    .logo-body {
-        position: static;
-        width: auto;
-        max-width: 800px;
-        margin: 25px auto;
-        padding: 0 20px;
-        text-align: center;
-    }
-
-    .logo-body img {
-        margin: 0 auto;
-        max-width: 250px;
-    }
-
-    .website-body {
-        justify-content: center;
-        padding: 0 10px 20px;
-        overflow-x: auto;
-    }
 
     .site-header {
         padding: 15px 10px 0;
@@ -223,19 +194,7 @@
         width: 100%;
         height: 800px;
     }
-.logo-circle-container {
-    width: 120px;
-    height: 120px;
-    background-color: #fcfbfe;
-    border: 2px solid #3a2c3f;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(58, 44, 63, 0.12);
-    margin-bottom: 15px;
-}
+
 /* ========================================
    MASTER LAYOUT (Side-by-Side Split)
 ======================================== */
