@@ -129,12 +129,6 @@
     box-sizing: border-box;
 }
 
-.sewing-logo {
-    position:absolute;
-    width: 50%;
-    height: 15.25%;
-}
-
 /* Content panel connected to the tabs */
 .tab-calc {
     display: flex;
