@@ -1,3 +1,116 @@
+
+
+/* ========================================
+   1. COLOR PALETTE & GOLD ACCENTS
+======================================== */
+:root {
+    --lavender-bg: #C3B1E1;
+    --plum-dark: #3f2f4a;
+    --plum-mid: #8f7aa9;
+    --cream-bg: #FAF8F5;
+    --gold-primary: #C59B47;
+    --gold-light: #E2C275;
+    --gold-soft: rgba(197, 155, 71, 0.28);
+}
+
+/* Header & Logo Gold Framing */
+.site-header {
+    border-bottom: 2px solid var(--gold-primary);
+}
+
+.site-title {
+    color: var(--plum-dark);
+    text-shadow: 0 1px 0 rgba(226, 194, 117, 0.45);
+}
+
+.logo-circle {
+    border: 3px solid var(--gold-primary);
+    box-shadow: 0 4px 14px rgba(63, 47, 74, 0.22), 0 0 0 2px rgba(226, 194, 117, 0.35);
+}
+
+/* Browser-Style Tabs Gold Accents */
+.frame-btn {
+    border-color: var(--gold-primary);
+}
+
+.frame-btn:hover:not(.active) {
+    background-color: #d8c9ed;
+    border-color: var(--gold-primary);
+    color: var(--plum-dark);
+}
+
+.frame-btn.active {
+    background-color: var(--plum-dark);
+    color: var(--gold-light);
+    border-color: var(--gold-primary);
+    box-shadow: inset 0 2px 0 var(--gold-light);
+}
+
+/* Active Frame Container Gold Trim */
+.tab-calc {
+    border: 2px solid var(--gold-primary);
+    box-shadow: 0 8px 22px rgba(63, 47, 74, 0.18), 0 0 0 1px var(--gold-soft);
+}
+
+/* Quilt Gallery Gold Accents */
+.quilt-display-card {
+    border: 2px solid var(--gold-primary);
+    outline: 1.5px dashed var(--gold-primary);
+    outline-offset: -6px;
+}
+
+.quilt-image-wrapper {
+    border: 1.5px solid var(--gold-primary);
+}
+
+.quilt-controls button {
+    border-color: var(--gold-primary);
+}
+
+.quilt-controls button:hover {
+    color: var(--gold-light);
+    border-color: var(--gold-light);
+}
+
+.quilt-thumbnails img:hover {
+    border-color: var(--gold-primary);
+}
+
+.quilt-thumbnails img.active {
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 0 2px var(--gold-light);
+
+    /* Gold Accents Applied to Header */
+.site-header {
+    background-color: #C3B1E1;
+    border-top: 2px solid var(--gold-primary, #C59B47);
+    border-bottom: 3px solid var(--gold-primary, #C59B47);
+    box-shadow: inset 0 1px 0 var(--gold-light, #E2C275),
+                0 4px 14px rgba(63, 47, 74, 0.16);
+}
+
+.site-header .site-title {
+    color: var(--plum-dark, #3f2f4a);
+    text-shadow: 0 1px 0 var(--gold-light, #E2C275);
+}
+
+.site-header .logo-circle {
+    border: 3px solid var(--gold-primary, #C59B47);
+    box-shadow: 0 4px 14px rgba(63, 47, 74, 0.22),
+                0 0 0 2px rgba(226, 194, 117, 0.45);
+}
+
+/* Optional: make the repeating curl stitch inside the header golden as well */
+.site-header .stitch-thread {
+    stroke: var(--gold-primary, #C59B47);
+}
+
+.site-header .stitch-shadow {
+    stroke: rgba(255, 244, 214, 0.45);
+}
+}
+
+
 /* ========================================
    2. HEADER & LOGO STYLING
 ======================================== */
@@ -14,8 +127,74 @@
     background-color: #C3B1E1;
     color: #333333;
     position: relative;
+    overflow: hidden;
 }
 
+.header-stitch-seam {
+    position: absolute;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.header-stitch-seam svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Top border: flipped so curls point downward from the top edge */
+.header-stitch-seam.gold-top {
+    top: 2px;
+    height: 54px;
+    transform: scaleY(-1);
+}
+
+/* Middle band: spans across the middle of the header */
+.header-stitch-seam.gold-center {
+    top: 50%;
+    height: 88px;
+    transform: translateY(-50%);
+}
+
+/* Bottom seam: sits along the bottom edge */
+.header-stitch-seam.gold-bottom {
+    bottom: 2px;
+    height: 54px;
+}
+
+.stitch-gold-thread {
+    fill: none;
+    stroke: var(--gold-primary, #C59B47);
+    stroke-width: 2.5;
+    stroke-dasharray: 8.5 4.5;
+    stroke-linecap: round;
+}
+
+.stitch-gold-highlight {
+    fill: none;
+    stroke: rgba(255, 244, 214, 0.45);
+    stroke-width: 2.5;
+    stroke-dasharray: 8.5 4.5;
+    stroke-linecap: round;
+    transform: translateY(1.25px);
+}
+
+.brand-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.site-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    z-index: 2;
+}
 .logo-circle {
     position: relative;
     flex-shrink: 0; /* Prevents the circle from squishing into an oval */
@@ -42,39 +221,38 @@
     object-fit: contain;
     display: block;
 }
-/*BROWSER-STYLE TABS ON THE RIGHT*/
 
+/* ========================================
+   3. BROWSER-STYLE TABS (FRAME SWITCHER)
+======================================== */
 .frame-switcher {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     flex-wrap: wrap;
     gap: 4px;
-
     width: 100%;
     margin-top: auto;
+    z-index: 1;
 }
 
 .frame-btn {
     position: relative;
     padding: 12px 24px;
-
     border: 1px solid #8f7aa9;
     border-bottom: none;
     border-radius: 10px 10px 0 0;
-
     background-color: #b5a0d2;
     color: #3f2f4a;
-
     font-family: inherit;
     font-size: 1rem;
     cursor: pointer;
-
     transition: background-color 0.2s ease;
 }
 
 .frame-btn:hover:not(.active) {
     background-color: #d8c9ed;
+    z-index: 1;
 }
 
 .frame-btn.active {
@@ -84,70 +262,80 @@
     border-color: #3f2f4a;
 }
 
-/*WELCOME SECTION ON THE LEFT*/
-
-.logo-body {
-    position: absolute;
-    top: 190px;
-    left: 30px;
-
-    width: 400px;
-    max-width: calc(35% - 40px);
-    height: auto;
-
-    text-align: left;
-}
-
-.logo-body img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-.logo-body h2,
-.logo-body h3 {
-    color: #333333;
-}
-
-.logo-body h3 {
-    font-weight: normal;
-    line-height: 1.6;
-}
 
 /* ========================================
-   IFRAME AREA ON THE RIGHT
+   4. WEBSITE BODY & CONTAINER
 ======================================== */
-
 .website-body {
+    position: relative;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
-
     width: 100%;
-
+    min-height: 820px;
+    background-color: #FAF8F5; /* Warm linen/cream body background */
+    overflow: hidden;
     box-sizing: border-box;
+    z-index: 2;
 }
 
-/* Content panel connected to the tabs */
+.body-stitch-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.body-stitch-overlay svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Rotate around the center so diagonal stitches cover corners without clipping */
+.diagonal-stitch-rect {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: rotate(-35deg);
+}
+
+.body-stitch-thread {
+    fill: none;
+    stroke: var(--gold-primary, #C59B47);
+    stroke-width: 2.3;
+    stroke-dasharray: 8.5 4.5;
+    stroke-linecap: round;
+    opacity: 0.75;
+}
+
+.body-stitch-highlight {
+    fill: none;
+    stroke: rgba(255, 244, 214, 0.55);
+    stroke-width: 2.3;
+    stroke-dasharray: 8.5 4.5;
+    stroke-linecap: round;
+    transform: translateY(1.2px);
+}
+
 .tab-calc {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
     width: fit-content;
     max-width: 100%;
     padding: 8px;
-
     box-sizing: border-box;
     background-color: #3f2f4a;
     border-radius: 0 0 12px 12px;
     overflow: hidden;
+    position: relative;
+    z-index: 10;
 }
 
-/*IFRAMES*/
 
-/* All 4 iframe types share base styling */
+/* ========================================
+   5. IFRAMES & VIEW PANELS
+======================================== */
 .calc-frame,
 .lib-frame,
 .cart-frame,
@@ -160,7 +348,6 @@
     box-sizing: border-box;
 }
 
-/* Individual page dimensions */
 .calc-frame {
     width: 500px;
     height: 800px;
@@ -171,17 +358,11 @@
     height: 800px;
 }
 
-.cart-frame {
-    width: 750px;
-    height: 800px;
-}
-
 .about-frame {
     width: 750px;
     height: 800px;
 }
 
-/* Show only the selected page */
 .about-frame.active-frame,
 .lib-frame.active-frame,
 .cart-frame.active-frame,
@@ -189,19 +370,14 @@
     display: block;
 }
 
-/* Smaller screens */
-@media (max-width: 900px) {
-    .calc-frame,
-    .lib-frame,
-    .cart-frame,
-    .about-frame {
-        width: 100%;
-        min-width: 0;
-    }
+.shopping-cart {
+    background-color: #3a2c3f;
 }
 
-/*RESPONSIVE LAYOUT*/
 
+/* ========================================
+   6. RESPONSIVE MEDIA QUERIES
+======================================== */
 @media (max-width: 900px) {
     .logo-body {
         position: static;
@@ -235,6 +411,14 @@
         padding: 10px 12px;
         font-size: 0.9rem;
     }
+
+    .calc-frame,
+    .lib-frame,
+    .cart-frame,
+    .about-frame {
+        width: 100%;
+        min-width: 0;
+    }
 }
 
 @media (max-width: 600px) {
@@ -248,17 +432,137 @@
         width: 100%;
         height: 800px;
     }
-.logo-circle-container {
-    width: 120px;
-    height: 120px;
-    background-color: #fcfbfe;
-    border: 2px solid #3a2c3f;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(58, 44, 63, 0.12);
-    margin-bottom: 15px;
 }
 
+/* Zero-height anchor sits flush beneath the header without pushing .website-body down */
+.quilt-anchor {
+  position: relative;
+  width: 100%;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 3; /* Lowered from 100 so it doesn't sit above .website-body / iframes */
+}
+
+/* Anchors to the top-left of .quilt-anchor (right below the header) */
+.quilt-gallery-sidebar {
+  position: absolute;
+  left: 1rem;
+  top: 0; /* Flush with the bottom of the header */
+  width: 280px;
+  z-index: 1;
+}
+
+/* Stack cleanly above .website-body on smaller screens so it doesn't overlap */
+@media (max-width: 1200px) {
+  .quilt-anchor {
+    height: auto;
+  }
+  .quilt-gallery-sidebar {
+    position: static;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 1rem auto;
+  }
+}
+
+/* Gallery Card Styling matching website palette */
+.quilt-display-card {
+  background: #FAF8F5; /* Warm linen/cream */
+  border-radius: 12px;
+  padding: 0.95rem;
+  box-shadow: 0 6px 18px rgba(30, 36, 59, 0.16);
+  border: 2px solid #3f2f4a; /* Deep plum outer frame */
+  outline: 1.5px dashed #3f2f4a ; /* Subtle antique-gold inner stitch accent */
+  outline-offset: -6px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.quilt-image-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #1E243B; /* Midnight navy backdrop */
+  border: 1.5px solid #3f2f4a; /* Antique gold trim */
+}
+
+.quilt-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+/* Navigation Controls */
+.quilt-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.quilt-controls button {
+  background: #3f2f4a; /* Deep plum buttons */
+  color: #FAF8F5;
+  border: 1px solid #C59B47; /* Antique gold border */
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.quilt-controls button:hover {
+  background: #1E243B; /* Midnight navy on hover */
+  color: #E2C275; /* Warm gold text on hover */
+  transform: translateY(-1px);
+}
+
+#quilt-counter {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #3f2f4a; /* Deep plum counter text */
+}
+
+/* Thumbnails */
+.quilt-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+}
+
+.quilt-thumbnails img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.65;
+  border: 2px solid transparent;
+  transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.quilt-thumbnails img:hover {
+  opacity: 0.95;
+  border-color: #3f2f4a;
+}
+
+.quilt-thumbnails img.active {
+  opacity: 1;
+  border-color: #C3B1E1; /* Antique gold highlight on active quilt */
+  box-shadow: 0 0 0 1px #3f2f4a;
+}
+/* On smaller screens, place it cleanly above .website-body so it doesn't overlap iframes */
+@media (max-width: 1200px) {
+  .quilt-gallery-sidebar {
+    position: static;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 1rem auto;
+  }
+}
