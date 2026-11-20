@@ -237,3 +237,72 @@
     margin-bottom: 15px;
 }
 
+/* ========================================
+   MASTER LAYOUT (Side-by-Side Split)
+======================================== */
+.master-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1450px;
+    margin: 20px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    gap: 30px;
+}
+
+/* Left Independent Slideshow Area */
+.left-slideshow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3f2f4a; /* Matches site's deep plum */
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(63, 47, 74, 0.2);
+}
+
+.slideshow-heading {
+    color: #eae4ee;
+    font-family: inherit;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.independent-slideshow-frame {
+    width: 500px;
+    height: 735px;
+    border: none;
+    border-radius: 8px;
+    background-color: #111;
+}
+
+/* Adjust right website body to fit beside the left column */
+.website-body {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: fit-content;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 1100px) {
+    .master-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-slideshow-container {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .website-body {
+        justify-content: center;
+        width: 100%;
+    }
+}
