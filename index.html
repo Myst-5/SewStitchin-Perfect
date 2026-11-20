@@ -10,8 +10,25 @@
 <body style="background-color: #eae4ee;">
 
 <header class="site-header">
-    <div class="logo-circle">
-        <img class="sewing-logo" src="sewinglogo.png" alt="Sew Stitchin' Perfect Logo">
+<!-- Top Gold Stitch Border (flipped vertically so curls hang down) -->
+    <div class="header-stitch-seam gold-top" aria-hidden="true">
+        <svg width="100%" height="54">
+            <rect width="100%" height="54" fill="url(#gold-header-curls)" />
+        </svg>
+    </div>
+
+    <!-- Center Gold Stitch Band (larger curls across the middle of the header) -->
+    <div class="header-stitch-seam gold-center" aria-hidden="true">
+        <svg width="100%" height="88">
+            <rect width="100%" height="88" fill="url(#gold-header-curls)" />
+        </svg>
+    </div>
+
+    <div class="brand-group">
+        <div class="logo-circle">
+            <img class="sewing-logo" src="sewinglogo.png" alt="Sew Stitchin' Perfect Logo">
+        </div>
+        <span class="site-title">SewStitchin' Perfect</span>
     </div>
 
     <nav class="frame-switcher" role="tablist" aria-label="Website sections">
@@ -51,9 +68,93 @@
 
     </nav>
 
+<!-- Bottom Gold Stitch Seam (curls upward from the bottom edge) -->
+    <div class="header-stitch-seam gold-bottom" aria-hidden="true">
+        <svg width="100%" height="54">
+            <defs>
+                <!-- Repeating 220px tile with Large, Small, and Medium golden curls -->
+                <pattern id="gold-header-curls" width="220" height="54" patternUnits="userSpaceOnUse">
+                    <path
+                        class="stitch-gold-highlight"
+                        d="M 0 43
+                           L 18 43
+                           C 42 43, 66 43, 66 23 C 66 6, 34 6, 34 23 C 34 35, 56 35, 56 23 C 56 14, 44 14, 44 23
+                           M 36 41 C 52 43, 72 43, 92 43
+                           C 104 43, 116 43, 116 33 C 116 25, 100 25, 100 33 C 100 39, 111 39, 111 33
+                           M 102 43 C 114 43, 128 43, 144 43
+                           C 162 43, 180 43, 180 27 C 180 14, 155 14, 155 27 C 155 36, 172 36, 172 27 C 172 21, 163 21, 163 27
+                           M 157 43 C 175 43, 198 43, 220 43"
+                    />
+                    <path
+                        class="stitch-gold-thread"
+                        d="M 0 43
+                           L 18 43
+                           C 42 43, 66 43, 66 23 C 66 6, 34 6, 34 23 C 34 35, 56 35, 56 23 C 56 14, 44 14, 44 23
+                           M 36 41 C 52 43, 72 43, 92 43
+                           C 104 43, 116 43, 116 33 C 116 25, 100 25, 100 33 C 100 39, 111 39, 111 33
+                           M 102 43 C 114 43, 128 43, 144 43
+                           C 162 43, 180 43, 180 27 C 180 14, 155 14, 155 27 C 155 36, 172 36, 172 27 C 172 21, 163 21, 163 27
+                           M 157 43 C 175 43, 198 43, 220 43"
+                    />
+                </pattern>
+            </defs>
+            <rect width="100%" height="54" fill="url(#gold-header-curls)" />
+        </svg>
+    </div>
 </header>
+<!-- Zero-height anchor right below the header -->
+<div class="quilt-anchor">
+  <aside class="quilt-gallery-sidebar">
+    <div class="quilt-display-card">
+      <div class="quilt-image-wrapper">
+        <img id="quilt-active-img" src="Quilt Photos.jpg" alt="Quilt Showcase" />
+      </div>
 
+      <div class="quilt-controls">
+        <button id="quilt-prev" aria-label="Previous Quilt">&#10094;</button>
+        <span id="quilt-counter">1 / 8</span>
+        <button id="quilt-next" aria-label="Next Quilt">&#10095;</button>
+      </div>
+
+      <div class="quilt-thumbnails" id="quilt-thumbnails"></div>
+    </div>
+  </aside>
+</div>
 <div class="website-body">
+    <div class="website-body">
+    <!-- Diagonal Gold Curl Stitch Overlay across the website body -->
+    <div class="body-stitch-overlay" aria-hidden="true">
+        <svg width="100%" height="100%">
+            <defs>
+                <!-- Repeating 220px tile with Large, Small, and Medium golden curls -->
+                <pattern id="diagonal-gold-curls" width="220" height="54" patternUnits="userSpaceOnUse">
+                    <path
+                        class="body-stitch-highlight"
+                        d="M 0 43
+                           L 18 43
+                           C 42 43, 66 43, 66 23 C 66 6, 34 6, 34 23 C 34 35, 56 35, 56 23 C 56 14, 44 14, 44 23
+                           M 36 41 C 52 43, 72 43, 92 43
+                           C 104 43, 116 43, 116 33 C 116 25, 100 25, 100 33 C 100 39, 111 39, 111 33
+                           M 102 43 C 114 43, 128 43, 144 43
+                           C 162 43, 180 43, 180 27 C 180 14, 155 14, 155 27 C 155 36, 172 36, 172 27 C 172 21, 163 21, 163 27
+                           M 157 43 C 175 43, 198 43, 220 43"
+                    />
+                    <path
+                        class="body-stitch-thread"
+                        d="M 0 43
+                           L 18 43
+                           C 42 43, 66 43, 66 23 C 66 6, 34 6, 34 23 C 34 35, 56 35, 56 23 C 56 14, 44 14, 44 23
+                           M 36 41 C 52 43, 72 43, 92 43
+                           C 104 43, 116 43, 116 33 C 116 25, 100 25, 100 33 C 100 39, 111 39, 111 33
+                           M 102 43 C 114 43, 128 43, 144 43
+                           C 162 43, 180 43, 180 27 C 180 14, 155 14, 155 27 C 155 36, 172 36, 172 27 C 172 21, 163 21, 163 27
+                           M 157 43 C 175 43, 198 43, 220 43"
+                    />
+                </pattern>
+            </defs>
+            <rect class="diagonal-stitch-rect" x="-50%" y="-50%" width="200%" height="200%" fill="url(#diagonal-gold-curls)" />
+        </svg>
+    </div>
 
     <!-- Container surrounds the selected iframe -->
     <div class="tab-calc" id="frameContainer">
@@ -68,6 +169,7 @@
         <iframe class="calc-frame" id="calculatorFrame" src="calculator.html" title="Quilt Calculator" aria-hidden="true" tabindex="-1"></iframe>
 
     </div>
+</div>
 </div>
 </body>
 </html>
