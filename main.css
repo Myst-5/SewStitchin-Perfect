@@ -104,39 +104,6 @@
     box-sizing: border-box;
 }
 
-/* Content panel connected to the tabs */
-.tab-calc {
-@@ -168,6 +177,26 @@
-
-/*RESPONSIVE LAYOUT*/
-
-@media (max-width: 900px) {
-    .logo-body {
-        position: static;
-        width: auto;
-        max-width: 800px;
-        margin: 25px auto;
-        padding: 0 20px;
-        text-align: center;
-    }
-
-    .logo-body img {
-        margin: 0 auto;
-        max-width: 250px;
-    }
-
-    .website-body {
-        justify-content: center;
-        padding: 0 10px 20px;
-        overflow-x: auto;
-    }
-
-    .site-header {
-        padding: 15px 10px 0;
-@@ -194,73 +223,16 @@
-        width: 100%;
-        height: 800px;
-    }
 /* ========================================
    BACKGROUND SLIDESHOW STYLING
 ======================================== */
