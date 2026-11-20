@@ -70,6 +70,8 @@ let selectedPattern = patterns[0];
 let battingType = '8020';
 let includeBinding = true;
 
+const VENMO_USERNAME = "SewStitchinPerfect";
+
 const BATTING_RATES = {
     'none': 0,
     '8020': 0.30,
@@ -89,9 +91,18 @@ function formatRate(num) {
     return num.toFixed(2);
 }
 
+function toggleAdminMode() {
+    const isChecked = document.getElementById('adminToggle').checked;
+    const toolbar = document.getElementById('adminToolbar');
+    if (isChecked) {
+        toolbar.classList.add('show');
+    } else {
+        toolbar.classList.remove('show');
+    }
+}
+
 function renderPatternList(filterText = '') {
     const listContainer = document.getElementById('patternList');
-    if (!listContainer) return;
     listContainer.innerHTML = '';
     const unit = document.getElementById('unitSelect').value;
     const inchMult = unitToInches[unit];
@@ -113,40 +124,37 @@ function renderPatternList(filterText = '') {
     });
 }
 
+function togglePatternMenu(e) {
+    e.stopPropagation();
+    const menu = document.getElementById('patternMenu');
+    menu.classList.toggle('show');
+    if (menu.classList.contains('show')) {
+        document.getElementById('patternSearch').focus();
+    }
+}
+
+function filterPatterns() {
+    const query = document.getElementById('patternSearch').value;
+    renderPatternList(query);
+}
+
 function selectPattern(pattern) {
     selectedPattern = pattern;
     updateSelectedPatternUI();
-    const menu = document.getElementById('patternMenu');
-    if (menu) menu.classList.remove('show');
+    document.getElementById('patternMenu').classList.remove('show');
+    calculate();
 }
 
 function updateSelectedPatternUI() {
-    const nameEl = document.getElementById('selectedPatternName');
-    if (!nameEl) return;
     const unit = document.getElementById('unitSelect').value;
     const inchMult = unitToInches[unit];
     const displayRate = selectedPattern.rate * (inchMult * inchMult);
 
-    nameEl.textContent = selectedPattern.name;
+    document.getElementById('selectedPatternName').textContent = selectedPattern.name;
     document.getElementById('selectedPatternPrice').textContent = `$${formatRate(displayRate)}`;
     document.getElementById('selectedPatternUnit').textContent = sqUnitAbbr[unit];
 }
 
-window.onload = function() {
-    selectPattern(patterns[0]);
-    renderPatternList();
-
-    // Background Slideshow Interval Loop (Changes every 5 seconds)
-    const bgSlides = document.querySelectorAll('.bg-slide');
-    if (bgSlides.length > 0) {
-        let bgIndex = 0;
-        setInterval(() => {
-            bgSlides[bgIndex].classList.remove('active');
-            bgIndex = (bgIndex + 1) % bgSlides.length;
-            bgSlides[bgIndex].classList.add('active');
-        }, 5000);
-    }
-}
 function openAddModal() {
     document.getElementById('newPatternName').value = '';
     document.getElementById('newPatternRate').value = '';
@@ -510,5 +518,3 @@ function payWithVenmo() {
     // Open Venmo in a new tab (or trigger the Venmo mobile app)
     window.open(venmoUrl, "_blank", "noopener,noreferrer");
 }
-
-
