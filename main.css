@@ -1,33 +1,4 @@
 /* ========================================
-   BACKGROUND SLIDESHOW STYLING
-======================================== */
-.bg-slideshow {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1; /* Keeps it behind all content */
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.bg-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-}
-
-.bg-slide.active {
-    opacity: 0.35; /* Set background transparency so text remains readable */
-}
-
-/* ========================================
    2. HEADER & LOGO STYLING
 ======================================== */
 .site-header {
@@ -37,39 +8,45 @@
     width: 100%;
     min-height: 220px;
     box-sizing: border-box;
-    background-color: rgba(195, 177, 225, 0.85); /* Slightly translucent to blend with background */
+    background-color: #C3B1E1;
     color: #333333;
     position: relative;
 }
 
-.logo-circle {
+/* Container to anchor the overlapping elements */
+.logo-wrapper {
     position: relative;
     width: 170px;
     height: 170px;
-    border-radius: 50%;
-    background-color: #e8e2eb; /* Soft lavender-white interior */
-
-    /* Inner border + outer plum ring that stays inside the header */
-    border: 3px solid #8f7aa9;
-    box-shadow:
-        0 0 0 4px #C3B1E1,
-        0 0 0 8px #3f2f4a;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px;
     margin-bottom: 10px;
     z-index: 3;
 }
 
-.sewing-logo {
+.logo-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: block;
+    border-radius: 50%;
+    background-color: #e8e2eb; /* Soft lavender-white interior */
+    border: 3px solid #8f7aa9;
+    box-shadow:
+        0 0 0 4px #C3B1E1,
+        0 0 0 8px #3f2f4a;
+    z-index: 1;
 }
 
+.sewing-logo {
+    position: relative;
+    width: 95%;
+    height: 100%;
+    top: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: contain;
+    z-index: 4;
+}
 /*BROWSER-STYLE TABS ON THE RIGHT*/
 
 .frame-switcher {
@@ -112,36 +89,6 @@
     border-color: #3f2f4a;
 }
 
-/*WELCOME SECTION ON THE LEFT*/
-
-.logo-body {
-    position: absolute;
-    top: 190px;
-    left: 30px;
-
-    width: 400px;
-    max-width: calc(35% - 40px);
-    height: auto;
-
-    text-align: left;
-}
-
-.logo-body img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-.logo-body h2,
-.logo-body h3 {
-    color: #333333;
-}
-
-.logo-body h3 {
-    font-weight: normal;
-    line-height: 1.6;
-}
 
 /* ========================================
    IFRAME AREA ON THE RIGHT
@@ -153,76 +100,17 @@
     align-items: flex-start;
 
     width: 100%;
-    
+
     box-sizing: border-box;
 }
 
 /* Content panel connected to the tabs */
 .tab-calc {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+@@ -168,6 +177,26 @@
 
-    width: fit-content;
-    max-width: 100%;
-    padding: 8px;
-
-    box-sizing: border-box;
-    background-color: #3f2f4a;
-    border-radius: 0 0 12px 12px;
-    overflow: hidden;
-}
-
-/*IFRAMES*/
-
-.calc-frame,
-.lib-frame,
-.cart-frame,
-.about-frame {
-    display: none;
-    flex: none;
-    border: none;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.calc-frame {
-    width: 500px;
-    height: 800px;
-}
-
-.lib-frame {
-    width: 1100px;
-    height: 800px;
-}
-
-.cart-frame {
-    width: 750px;
-    height: 800px;
-}
-
-.about-frame {
-    width: 750px;
-    height: 800px;
-}
-
-.about-frame.active-frame,
-.lib-frame.active-frame,
-.cart-frame.active-frame,
-.calc-frame.active-frame {
-    display: block;
-}
+/*RESPONSIVE LAYOUT*/
 
 @media (max-width: 900px) {
-    .calc-frame,
-    .lib-frame,
-    .cart-frame,
-    .about-frame {
-        width: 100%;
-        min-width: 0;
-    }
-    
     .logo-body {
         position: static;
         width: auto;
@@ -245,27 +133,35 @@
 
     .site-header {
         padding: 15px 10px 0;
-    }
-
-    .frame-switcher {
-        justify-content: center;
-    }
-
-    .frame-btn {
-        padding: 10px 12px;
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .tab-calc {
-        width: 100%;
-        padding: 5px;
-    }
-
-    .calc-frame,
-    .lib-frame {
+@@ -194,73 +223,16 @@
         width: 100%;
         height: 800px;
     }
+/* ========================================
+   BACKGROUND SLIDESHOW STYLING
+======================================== */
+.bg-slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Keeps it behind all content */
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bg-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.bg-slide.active {
+    opacity: 0.35; /* Set background transparency so text remains readable */
 }
