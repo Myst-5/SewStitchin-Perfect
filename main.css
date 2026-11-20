@@ -94,6 +94,15 @@
    IFRAME AREA ON THE RIGHT
 ======================================== */
 
+.website-body {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    width: 100%;
+
+    box-sizing: border-box;
+}
 
 /* Content panel connected to the tabs */
 .tab-calc {
@@ -168,6 +177,26 @@
 
 /*RESPONSIVE LAYOUT*/
 
+@media (max-width: 900px) {
+    .logo-body {
+        position: static;
+        width: auto;
+        max-width: 800px;
+        margin: 25px auto;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    .logo-body img {
+        margin: 0 auto;
+        max-width: 250px;
+    }
+
+    .website-body {
+        justify-content: center;
+        padding: 0 10px 20px;
+        overflow-x: auto;
+    }
 
     .site-header {
         padding: 15px 10px 0;
@@ -194,73 +223,16 @@
         width: 100%;
         height: 800px;
     }
-
-/* ========================================
-   MASTER LAYOUT (Side-by-Side Split)
-======================================== */
-.master-layout {
+.logo-circle-container {
+    width: 120px;
+    height: 120px;
+    background-color: #fcfbfe;
+    border: 2px solid #3a2c3f;
+    border-radius: 50%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 1450px;
-    margin: 20px auto;
-    padding: 0 20px;
-    box-sizing: border-box;
-    gap: 30px;
-}
-
-/* Left Independent Slideshow Area */
-.left-slideshow-container {
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background-color: #3f2f4a; /* Matches site's deep plum */
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(63, 47, 74, 0.2);
-}
-
-.slideshow-heading {
-    color: #eae4ee;
-    font-family: inherit;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
-}
-
-.independent-slideshow-frame {
-    width: 500px;
-    height: 735px;
-    border: none;
-    border-radius: 8px;
-    background-color: #111;
-}
-
-/* Adjust right website body to fit beside the left column */
-.website-body {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    width: fit-content;
-    box-sizing: border-box;
-}
-
-/* Responsive adjustment for smaller screens */
-@media (max-width: 1100px) {
-    .master-layout {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .left-slideshow-container {
-        width: 100%;
-        max-width: 500px;
-    }
-
-    .website-body {
-        justify-content: center;
-        width: 100%;
-    }
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(58, 44, 63, 0.12);
+    margin-bottom: 15px;
 }
