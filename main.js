@@ -476,45 +476,68 @@ window.onload = function() {
         renderSidebar();
         renderPatterns();
     });
-/*-----------------------Shopping--------------------*/
-/*---------------------Cart--Script------------------*/
+/* Image showcaser */
+document.addEventListener("DOMContentLoaded", () => {
+  const quiltPhotos = [
+    "Quilt Photos.jpg",
+    "Quilt Photos_1.jpg",
+    "Quilt Photos_2.jpg",
+    "Quilt Photos_3.jpg",
+    "Quilt Photos_3-2.jpg",
+    "Quilt Photos-3.jpg",
+    "Quilt Photos-4.jpg",
+    "Quilt Photos-5.jpg"
+  ];
 
-function payWithVenmo() {
-    const venmoUsername = "YourVenmoUsername"; // <-- Replace with your Venmo username (no @)
-    
-    // Grab current total
-    const totalElement = document.getElementById("total");
-    const totalAmount = parseFloat(totalElement.textContent) || 0;
+  let currentIndex = 0;
+  const activeImg = document.getElementById("quilt-active-img");
+  const counterEl = document.getElementById("quilt-counter");
+  const thumbsContainer = document.getElementById("quilt-thumbnails");
+  const prevBtn = document.getElementById("quilt-prev");
+  const nextBtn = document.getElementById("quilt-next");
 
-    if (totalAmount <= 0) {
-        alert("Please enter quilt dimensions and select a pattern before paying.");
-        return;
-    }
+  if (!activeImg || !thumbsContainer) return;
 
-    // Gather quilt details for the Venmo receipt note
-    const length = document.getElementById("side1").value || "0";
-    const width = document.getElementById("side2").value || "0";
-    const unit = document.getElementById("unitSelect").value;
-    const pattern = document.getElementById("selectedPatternName").textContent;
-    const thread = document.getElementById("threadColorInput").value.trim() || "Not specified";
+  function updateDisplay(index) {
+    currentIndex = (index + quiltPhotos.length) % quiltPhotos.length;
+    activeImg.src = quiltPhotos[currentIndex];
+    counterEl.textContent = `${currentIndex + 1} / ${quiltPhotos.length}`;
 
-    // Get active Batting and Binding selections
-    const activeBatting = document.querySelector("#battingBtnGroup .option-btn.active")?.textContent || "None";
-    const activeBinding = document.querySelector("#bindingBtnGroup .option-btn.active")?.textContent || "No";
+    // Highlight active thumbnail
+    const thumbImgs = thumbsContainer.querySelectorAll("img");
+    thumbImgs.forEach((img, idx) => {
+      img.classList.toggle("active", idx === currentIndex);
+    });
+  }
 
-    // Format the order summary note
-    const note = [
-        `Sew Stitchin' Perfect Quilt Order`,
-        `Size: ${length}x${width} ${unit}`,
-        `Pattern: ${pattern}`,
-        `Thread: ${thread}`,
-        `Batting: ${activeBatting}`,
-        `Binding: ${activeBinding}`
-    ].join(" | ");
+  // Generate thumbnail buttons
+  quiltPhotos.forEach((fileName, idx) => {
+    const thumb = document.createElement("img");
+    thumb.src = fileName;
+    thumb.alt = `Quilt thumbnail ${idx + 1}`;
+    if (idx === 0) thumb.classList.add("active");
+    thumb.addEventListener("click", () => {
+      updateDisplay(idx);
+      resetAutoPlay();
+    });
+    thumbsContainer.appendChild(thumb);
+  });
 
-    // Build the Venmo URL
-    const venmoUrl = `https://venmo.com/${encodeURIComponent(venmoUsername)}?txn=pay&amount=${totalAmount.toFixed(2)}&note=${encodeURIComponent(note)}`;
+  prevBtn.addEventListener("click", () => {
+    updateDisplay(currentIndex - 1);
+    resetAutoPlay();
+  });
 
-    // Open Venmo in a new tab (or trigger the Venmo mobile app)
-    window.open(venmoUrl, "_blank", "noopener,noreferrer");
-}
+  nextBtn.addEventListener("click", () => {
+    updateDisplay(currentIndex + 1);
+    resetAutoPlay();
+  });
+
+  // Auto-advance every 4 seconds
+  let autoPlay = setInterval(() => updateDisplay(currentIndex + 1), 4000);
+
+  function resetAutoPlay() {
+    clearInterval(autoPlay);
+    autoPlay = setInterval(() => updateDisplay(currentIndex + 1), 4000);
+  }
+});
