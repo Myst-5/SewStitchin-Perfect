@@ -10,12 +10,12 @@
 <body style="background-color: #eae4ee;">
 
 <header class="site-header">
+    <div class="logo-circle">
     <div class="logo-wrapper">
         <div class="logo-circle"></div>
         <img class="sewing-logo" src="sewinglogo.png" alt="Sew Stitchin' Perfect Logo">
     </div>
 
-    <!-- Original Frame Switcher (Controls the right side content only) -->
     <nav class="frame-switcher" role="tablist" aria-label="Website sections">
 
         <button
@@ -63,7 +63,13 @@
         <!-- About -->
         <iframe class="about-frame active-frame" id="aboutFrame" src="about.html" title="About Sew Stitchin' Perfect"></iframe>
 
-</div>
+        <!-- Pattern Library -->
+        <iframe class="lib-frame" id="libraryFrame" src="pattern-library.html" title="Pattern Library" aria-hidden="true" tabindex="-1"></iframe>
 
+        <!-- Calculator -->
+        <iframe class="calc-frame" id="calculatorFrame" src="calculator.html" title="Quilt Calculator" aria-hidden="true" tabindex="-1"></iframe>
+
+    </div>
+</div>
 </body>
 </html>
